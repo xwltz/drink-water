@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Layout } from 'antd';
+
+import SiderModule from './components/layout/Sider'
+import HeaderModule from './components/layout/Header'
+import FooterModule from './components/layout/Footer'
+
+import Routers from './router/router'
+
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const { Content } = Layout;
+
+interface IProps { }
+interface IState { }
+
+class App extends React.Component<IProps, IState> {
+  public render() {
+    return (
+      <div className="App">
+        <Layout style={{ minHeight: '100vh' }}>
+          <SiderModule></SiderModule>
+          <Layout>
+            <HeaderModule></HeaderModule>
+            <Content style={{ margin: '10px 15px' }}>
+              <Routers></Routers>
+            </Content>
+            <FooterModule></FooterModule>
+          </Layout>
+        </Layout>
+      </div>
+    );
+  }
 }
 
 export default App;
